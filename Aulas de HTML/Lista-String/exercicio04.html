@@ -21,11 +21,12 @@
     function analisar() {
         let palavra1 = ipt_palavra1.value;
         let palavra2 = ipt_palavra2.value;
+        
         if(palavra1 == palavra2) {
             div_result.innerHTML=`As palavras ${palavra1} e ${palavra2} são exatamente iguais`
         } else if(palavra1.toLowerCase() == palavra2.toLowerCase()){
             div_result.innerHTML=`As palavras ${palavra1} e ${palavra2} possuem o mesmo contéudo, mas a digitação é diferente(Maiúsculas e minúsculas)`
-        } else if(palavra1 !== palavra2) {
+        } else {
             div_result.innerHTML=`As palavras ${palavra1} e ${palavra2}
             são completamente diferentes`
         }
