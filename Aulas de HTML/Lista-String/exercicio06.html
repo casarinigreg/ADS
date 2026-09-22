@@ -20,5 +20,13 @@
         let frase = ipt_frase.value;
         let letra = ipt_letra.value;
         let posicaoLetra = frase[letra];
+        let primeiraLetra = frase[0];
+        let ultimaPosicao = frase.length - 1
+        let ultimaLetra = frase[ultimaPosicao]
+
+        div_result.innerHTML=`A primeira letra é: ${primeiraLetra}<br>
+        A ${letra}º letra é: ${posicaoLetra}<br>
+        A última letra é: ${ultimaLetra}`
+        
     }
 </script>
