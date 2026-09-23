@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista</title>
+</head>
+<body>
+    <label for="ipt_valor">Valor: </label>
+    <input type="text" id="ipt_valor">
+    <br>
+    <button onclick="adicionar()">Adicionar</button>
+    <button onclick="exibir()">Exibir</button>
+    <button onclick="remover()">Remover ultimo</button>
+    <button onclick="analisar()">Analisar lista</button>
+    <button onclick="pesquisa()">Pesquisar</button>
+    <div id="div_result"></div>
+</body>
+</html>
+<script>
+    let lista = [];
+
+    function adicionar() {
+        let valor = ipt_valor.value;
+        lista.push(valor);
+        console.log(lista);
+    }
+
+    function exibir() {
+        div_result.innerHTML=`${lista}`.replaceAll(',', '<br>');
+    }
+
+    function remover() {
+        let removido = lista.pop();
+        console.log(`Valor removido: ${removido}`);
+    }
+
+    function analisar() {
+        div_result.innerHTML=`
+        Tamanho:${lista.length} <br>
+        Primeiro:${lista[0]} <br>
+        Terceiro:${lista[2]} <br>
+        Último:${lista[lista.length - 1]}
+        `
+    }
+
+    function pesquisa() {
+        let valor = ipt_valor.value;
+        let indice = lista.indexOf(valor);
+
+        if(lista.includes(valor)) {           
+            div_result.innerHTML=`A lista inclui ${valor} na posição ${indice}`
+        } else {
+            div_result.innerHTML=`A lista não inclui ${valor}`
+        }
+    }
+</script>
+
