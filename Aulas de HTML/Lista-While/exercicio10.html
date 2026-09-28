@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="ipt_intervalo">
+   <button onclick="pares()">S2 Pares</button>
+     <div id="div_result"></div>
+</body>
+</html>
+<script>
+
+
+    function pares(){
+        let intervalo = Number(ipt_intervalo.value);
+        let contador = 0;
+
+        div_result.innerHTML=``
+        while(contador <= intervalo) {
+           
+            div_result.innerHTML+=`${contador}<br>`
+            contador += 2
+        }
+    }
+</script>
