@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2</title>
+</head>
+<body>
+    <h1>Diário de viagens</h1>
+
+    <label for="ipt_viagem">Destino de viagem: </label>
+    <input type="text" id="ipt_viagem">
+    <br>
+    <button onclick="adicionar()">Adicionar</button>
+    <button onclick="primeira()">Primeira viagem</button>
+    <button onclick="terceira()">Terceira viagem</button>
+    <button onclick="ultima()">Ultima viagem</button>
+    <div id="div_result">
+    </div>
+</body>
+</html>
+<script>
+    let lista = []
+
+    function adicionar() {
+        let viagem = ipt_viagem.value;
+        lista.push(viagem)
+    }
+
+    function primeira() {
+
+        if(lista.length > 0) {
+        div_result.innerHTML=`${lista[0]}`
+        } else {
+            div_result.innerHTML=`Ainda não viajou`
+        }
+    }
+
+    function terceira() {
+
+        if(lista.length > 2){
+            div_result.innerHTML=`${lista[2]}`
+        } else {
+            div_result.innerHTML=`Ainda não fez a terceira viagem`
+        }
+    }
+
+    function ultima() {
+
+        if(lista.length < 0) {
+            div_result.innerHTML=`Ainda não viajou`
+        } else {
+            div_result.innerHTML=`${lista[lista.length - 1]}`
+        }
+    }
+</script>
+<!--
+a) Tenha um campo "Destino de viagem" e um botão "Adicionar";
+
+b) Ao clicar no botão, esse destino deve ser adicionado a uma lista (que não aparece para o usuário). 
+
+Obs: Não existe problema em serem registrados valores repetidos.
+
+c) Devem haver os botões: 
+
+  "Primeira viagem" - Ao ser clicado, aparece abaixo o primeiro local cadastrado ou "Ainda não viajou" - caso nenhuma (zero viagens) viagem tenha sido registrada;
+
+  "Terceira viagem" - Ao ser clicado, aparece abaixo o terceiro local cadastrado ou "Ainda fez a terceira viagem", caso não tenha feito, ao menos, três viagens;
+
+  "Última viagem" - Ao ser clicado, aparece abaixo o último local cadastrado ou "Ainda não viajou", caso nenhuma (zero viagens) viagem tenha sido registrada.
+-->
