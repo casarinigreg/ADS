@@ -22,11 +22,20 @@
     function verificar() {
         let tabuada = Number(ipt_tabuada.value);
         let num = Number(ipt_num.value);
+        
 
         while(contador <= num) {
-            div_result.innerHTML+=`${tabuada} x ${contador} = ${tabuada * contador}<br>`
-            contador+= 1
+            let resultado = (tabuada * contador)
+            if(resultado % 2 == 0) {
+                contador+= 1 
+            div_result.innerHTML+=`<span style="color: blue">${tabuada} x ${contador} = ${resultado}</span><br>`
+            } else if(resultado % 2 == 1) {
+            div_result.innerHTML+=`<span style="color: red">${tabuada} x ${contador} = ${resultado}</span><br>`
+                contador+= 1
+              
+            }
         }
+
     }
 </script>
 <!--
