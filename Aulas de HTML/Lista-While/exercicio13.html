@@ -23,9 +23,11 @@
         let fraseRepetida = `${frase} `;
         let contador = 1;
 
+        div_result.innerHTML=``
         while(contador <= num) {
 
             div_result.innerHTML+=`${contador}. ${fraseRepetida} <br>`
+            alert(`${frase.repeat(num)}`)
 
             contador+= 1
             fraseRepetida+= `${frase} `
