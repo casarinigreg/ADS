@@ -24,15 +24,15 @@
         let inter1 = Number(ipt_inter1.value);
         let inter2 = Number(ipt_inter2.value);
         let div = Number(ipt_div.value);
-        let resultado = (inter1 / div);
+        let resultado = (div / inter1);
+        div_result.innerHTML = ``
 
-        while(inter1 <= inter2) {
-            if(inter1 % div !== 0) {                
-                inter1+= 2;
-            } else if(inter1 % div == 0) {
-                inter1+=1
+            while(inter1 < inter2) {
+                if(inter1 % div == 0) {
+                    inter1+= 1
             }
+                div_result.innerHTML+=`${inter1} <br>`
+                inter1+= 1
         }
-            div_result.innerHTML+=`${resultado}`
     }
 </script>
