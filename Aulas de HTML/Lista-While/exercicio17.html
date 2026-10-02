@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eexrcício 17</title>
+</head>
+<body>
+    <h1>Um elefante incomoda muita gente</h1>
+    <label for="ipt_elefante">Informe o numero de elefantes: </label>
+    <input type="number" id="ipt_elefante">
+    <br>
+    <button onclick="atazanar()">Atazanar a médium</button>
+    <div id="div_result"></div>
+</body>
+</html>
+<script>
+    function atazanar() {
+        let elefante = Number(ipt_elefante.value);
+        let contador = 0;
+
+        div_result.innerHTML=``
+        while(contador < elefante) {
+            contador++
+            div_result.innerHTML+=`1 elefante incomoda muita gente!<br>
+            ${contador} elefantes, incomodam, muito mais <br><br>`
+        }
+    }
+</script>
+
+<!-- No filme clássico "Ghost, do outra lado da vida", o protagonista, para atazanar a vida da médium canta a seguinte canção...   
+
+    1 elefante incomoda muita gente!
+    2 elefantes, incomodam, incomodam, muito mais!  
+
+    1 elefante incomoda muita gente!
+    3 elefantes, incomodam, incomodam, incomodam, muito mais!   
+
+    1 elefante incomoda muita gente!   
+    4 elefantes, incomodam, incomodam, incomodam, incomodam, muito mais!
+
+    ... e assim por diante, sempre repetindo que "1 incomoda" e "N incomodam"   
+
+Crie um programa o qual:   
+
+a) Solicite ao usuário a quantidade elefantes;  
+
+b) Ao clicar em "Atazanar a médium", exiba sempre o trecho da canção de 1 elefante, seguido do trecho com 2 elefantes e depois 3... até a quantidade de elefantes indicado em a). Note que a palavra "incomodam" repete-se conforme essa mesma quantidade.   
+
+Por exemplo, o se o usuário informar 4 em a), devem aparecer 3 estrofes, como no enunciado da questão, de "2 elefantes" até "4 elefantes", sempre repetindo a frase do "1 elefante incomoda muita gente" antes de cada estrofe.  -->
