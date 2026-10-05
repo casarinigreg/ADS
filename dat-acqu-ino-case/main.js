@@ -45,7 +45,7 @@ const serial = async (
 
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
-
+            
 
             await poolBancoDados.execute('INSERT INTO medida (lm35_temp, chave) VALUES (?, ?)',
                 [lm35, tcrt5000]
