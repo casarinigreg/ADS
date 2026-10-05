@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doceria gourmet</title>
+    <style>
+        img {
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <label for="ipt_macaron">Quantidade de macarons a serem vendidos</label>
+    <input type="number" id="ipt_macaron">
+    <br>
+    <label for="ipt_preco_macaron">Preço a ser vendido: </label>
+    <input type="number" id="ipt_preco_macaron">
+    <br><br>
+    <label for="ipt_brigadeiro">Quantidade de brigadeiros a serem vendidos</label>
+    <input type="number" id="ipt_brigadeiro">
+    <br>
+    <label for="ipt_preco_brigadeiro">Preço a ser vendido: </label>
+    <input type="number" id="ipt_preco_brigadeiro">
+    <br><br>
+    <label for="ipt_cupcake">Quantidade de Cupcakes a serem vendidos</label>
+    <input type="number" id="ipt_cupcake">
+    <br>
+    <label for="ipt_preco_cupcake">Preço a ser vendido: </label>
+    <input type="number" id="ipt_preco_cupcake">
+    <br><br>
+    <label for="ipt_cheesecake">Quantidade de brigadeiros a serem vendidos</label>
+    <input type="number" id="ipt_cheesecake">
+    <br>
+    <label for="ipt_preco_cheesecake">Preço a ser vendido: </label>
+    <input type="number" id="ipt_preco_cheesecake">
+    <br>
+    <button onclick="verificar()">Verificar vendas</button>
+    <div id="div_result"></div>
+</body>
+</html>
+<script>
+    function verificar() {
+        let contadorVendas = 1;
+
+        let qtdBrigadeiro = Number(ipt_brigadeiro.value);
+        let qtdMacaron = Number(ipt_macaron.value);
+        let qtdCupcake = Number(ipt_cupcake.value);
+        let qtdCheesecake = Number(ipt_cheesecake.value);
+
+        let totalQtd = qtdMacaron + qtdBrigadeiro + qtdCupcake + qtdCheesecake;
+
+        
+        let precoBrigadeiro = Number(ipt_preco_brigadeiro.value);
+        let porcentagemBrigadeiro = (qtdBrigadeiro / totalQtd) * 100;
+        let contadorBrigadeiro = 0;
+
+        
+        let precoMacaron = Number(ipt_preco_macaron.value);
+        let porcentagemMacaron = (qtdMacaron / totalQtd) * 100;
+        let contadorMacaron = 0;
+
+
+        let precoCupcake = Number(ipt_preco_cupcake.value);
+        let porcentagemCupcake = (qtdCupcake / totalQtd) * 100;
+        let contadorCupcake = 0;
+
+        
+        let precoCheesecake = Number(ipt_preco_cheesecake.value);
+        let porcentagemCheesecake = (qtdCheesecake / totalQtd) * 100;
+        let contadorCheesecake = 0;
+
+        let precoTotal = (precoMacaron * qtdMacaron) + (precoBrigadeiro * qtdBrigadeiro) + (precoCupcake * qtdCupcake) + (precoCheesecake * qtdCheesecake);
+
+        
+        if(qtdBrigadeiro > 0 && precoBrigadeiro > 0 && qtdMacaron > 0 && precoMacaron > 0 && qtdCupcake > 0 && precoCupcake > 0 && qtdCheesecake > 0 && precoCheesecake > 0) {
+
+            while(contadorVendas < totalQtd){
+
+            while(contadorMacaron < qtdMacaron){
+
+            div_result.innerHTML+=`VENDA ${contadorVendas} <br>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU6e_yDZHO_HfL6Lhlo8FIK0x6S26F3PQKAaa0KGx85g&s=10" alt=""><br>
+            R$${precoMacaron}<br><br>`
+            contadorMacaron++
+            contadorVendas++
+            }
+
+            while(contadorBrigadeiro < qtdBrigadeiro) {
+
+            div_result.innerHTML+=`VENDA ${contadorVendas} <br>
+            <img src="https://www.estadao.com.br/resizer/v2/OJZYJYMRUFEBDKYTEYE5ED7LME.jpeg?quality=80&auth=524d38b94f29d45d492ef7ef5a001e7a09979635804c8697bad6ad207ad5fe86&width=720&height=410&focal=234,301" alt=""><br>
+            R$${precoBrigadeiro}<br><br>`
+            contadorBrigadeiro++
+            contadorVendas++
+            }
+
+            while(contadorCupcake < qtdCupcake) {
+
+            div_result.innerHTML+=`VENDA ${contadorVendas} <br>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTqLPfR-fSe4AbzuwBm_ZaT_TgTk7JkZ-ssUzUH9w68ZRt2fYp5yAfwSE&s=10" alt=""><br>
+            R$${precoCupcake}<br><br>`
+            contadorCupcake++
+            contadorVendas++
+            }
+
+            while(contadorCheesecake < qtdCheesecake) {
+
+            div_result.innerHTML+=`VENDA ${contadorVendas} <br>
+            <img src="https://www.receitasnestle.com.br/sites/default/files/styles/recipe_detail_desktop_new/public/srh_recipes/dcb7a71331e9c1b0120a8f39826d00bf.jpg?itok=8ZyK3JLu" alt=""><br>
+            R$${precoCheesecake}<br><br>`
+            contadorCheesecake++
+            contadorVendas++
+            }
+
+            }
+
+            div_result.innerHTML+=`<br>Com a quantidade de ${qtdMacaron} Macarons(${porcentagemMacaron}% do total), ${qtdBrigadeiro} Brigadeiros(${porcentagemBrigadeiro}% do total), ${qtdCupcake} Cupcakes(${porcentagemCupcake}% do total) e ${qtdCheesecake} Cheesecakes(${porcentagemCheesecake}% do total, a venda totalizará R$${precoTotal}`
+        } else {
+            alert('Valores negativos! insira valores válidos')
+        }
+    }
+</script>
