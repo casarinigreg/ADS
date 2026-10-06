@@ -18,7 +18,7 @@ const HABILITAR_SENSORES_SIMULADOS = true;
 // função para comunicação serial
 const serial = async (
     valoresLm35,
-    valoresTcrt5000,
+    valoresTcrt5000
 ) => {
 
     // conexão com o banco de dados MySQL
@@ -36,21 +36,28 @@ const serial = async (
     const tratarLinha = async (data) => {
         console.log(data);
         const valores = data.split(';');
-        const tcrt5000 = parseInt(valores[1]);
-        const lm35 = parseFloat(valores[0]);
-
+        const lm35 = parseFloat(valores[1]);
+        const tcrt5000 = parseInt(valores[0]);
         // armazena os valores dos sensores nos arrays correspondentes
-        valoresLm35.push(lm35);
+       
         valoresTcrt5000.push(tcrt5000);
-
+        valoresLm35.push(lm35);
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
+
+             let ACRESCIMO_SALA2 = lm35 + 10;
+             let ACRESCIMO_SALA3 = lm35 + 20;
             
 
-            await poolBancoDados.execute('INSERT INTO medida (lm35_temp, chave) VALUES (?, ?)',
+            await poolBancoDados.execute('INSERT INTO medida (lm35_temp, chave, fk_sala) VALUES (?, ?, 1)',
                 [lm35, tcrt5000]
             );
-            console.log("valores inseridos no banco: ", lm35 + ", " + tcrt5000);
+            console.log("valores inseridos no banco: ", lm35 + ", " + tcrt5000 + " - Sala 1");
+
+            await poolBancoDados.execute('INSERT INTO medida (lm35_temp, chave, fk_sala) VALUES (?, ?, 2)',
+                 [ACRESCIMO_SALA2, tcrt5000]
+             );
+             console.log("valores inseridos no banco: ", lm35 + ", " + tcrt5000 + ' - Sala 2');
             // TODO (Etapa 3): escreva aqui o INSERT na tabela "medida"
 
             // lembre: o campo "momento" é preenchido pelo banco, não pelo main.js
