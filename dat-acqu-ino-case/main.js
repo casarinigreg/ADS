@@ -45,24 +45,31 @@ const serial = async (
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
 
-             let ACRESCIMO_SALA2 = lm35 + 10;
-             let ACRESCIMO_SALA3 = lm35 + 20;
+            const ACRESCIMO_SALA2 = (lm35 + 10);
+            const ACRESCIMO_SALA3 = (lm35 + 20);
             
 
             await poolBancoDados.execute('INSERT INTO medida (lm35_temp, chave, fk_sala) VALUES (?, ?, 1)',
                 [lm35, tcrt5000]
             );
-            console.log("valores inseridos no banco: ", lm35 + ", " + tcrt5000 + " - Sala 1");
+            console.log(`valores inseridos no banco:  ${lm35.toFixed(2)}, ${tcrt5000} - Sala 1`);
 
             await poolBancoDados.execute('INSERT INTO medida (lm35_temp, chave, fk_sala) VALUES (?, ?, 2)',
                  [ACRESCIMO_SALA2, tcrt5000]
              );
-             console.log("valores inseridos no banco: ", lm35 + ", " + tcrt5000 + ' - Sala 2');
+             console.log(`valores inseridos no banco:  ${ACRESCIMO_SALA2.toFixed(2)}, ${tcrt5000} - Sala 2`);
+
+             await poolBancoDados.execute('INSERT INTO medida (lm35_temp, chave, fk_sala) VALUES (?, ?, 3)',
+                 [ACRESCIMO_SALA3, tcrt5000]
+             );
+             console.log(`valores inseridos no banco:  ${ACRESCIMO_SALA3.toFixed(2)}, ${tcrt5000} - Sala 3`);
             // TODO (Etapa 3): escreva aqui o INSERT na tabela "medida"
 
             // lembre: o campo "momento" é preenchido pelo banco, não pelo main.js
 
         }
+        
+
     };
 
     // modo simulado: gera uma linha por segundo, no mesmo formato que o Arduino envia
