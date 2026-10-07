@@ -43,26 +43,41 @@ const serial = async (
         valoresTcrt5000.push(tcrt5000);
         valoresLm35.push(lm35);
         // insere os dados no banco de dados (se habilitado)
+
+            const ACRESCIMO_SALA2 = 10;
+            const ACRESCIMO_SALA3 = 20;
+
+        function classificarTemp(temperatura) {
+            if(temperatura >= 18 && temperatura <= 27) {
+                return 'ideal';
+            }
+
+            if((temperatura >= 15 && temperatura < 18) || (temperatura > 27 && temperatura <= 32)){
+                return 'atencao'
+            }
+            return 'risco'
+        }
+
         if (HABILITAR_OPERACAO_INSERIR) {
 
-            const ACRESCIMO_SALA2 = (lm35 + 10);
-            const ACRESCIMO_SALA3 = (lm35 + 20);
+            const tempSala2 = lm35 + ACRESCIMO_SALA2;
+            const tempSala3 = lm35 + ACRESCIMO_SALA3;
             
 
             await poolBancoDados.execute('INSERT INTO medida (lm35_temp, chave, fk_sala) VALUES (?, ?, 1)',
                 [lm35, tcrt5000]
             );
-            console.log(`valores inseridos no banco:  ${lm35.toFixed(2)}, ${tcrt5000} - Sala 1`);
+            console.log(`Sala 1 | ${lm35.toFixed(2)} °C | ${classificarTemp(lm35)}`);
 
             await poolBancoDados.execute('INSERT INTO medida (lm35_temp, chave, fk_sala) VALUES (?, ?, 2)',
-                 [ACRESCIMO_SALA2, tcrt5000]
+                 [tempSala2, tcrt5000]
              );
-             console.log(`valores inseridos no banco:  ${ACRESCIMO_SALA2.toFixed(2)}, ${tcrt5000} - Sala 2`);
+             console.log(`Sala 2 | ${tempSala2.toFixed(2)} °C | ${classificarTemp(tempSala2)}`);
 
              await poolBancoDados.execute('INSERT INTO medida (lm35_temp, chave, fk_sala) VALUES (?, ?, 3)',
-                 [ACRESCIMO_SALA3, tcrt5000]
+                 [tempSala3, tcrt5000]
              );
-             console.log(`valores inseridos no banco:  ${ACRESCIMO_SALA3.toFixed(2)}, ${tcrt5000} - Sala 3`);
+             console.log(`Sala 3 | ${tempSala3.toFixed(2)} °C | ${classificarTemp()}`);
             // TODO (Etapa 3): escreva aqui o INSERT na tabela "medida"
 
             // lembre: o campo "momento" é preenchido pelo banco, não pelo main.js
