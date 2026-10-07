@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poupança</title>
+</head>
+<body>
+
+    Depositos feitos no banco
+    <input type="number" id="ipt_deposito"><br>
+
+    valor de cada Depositos
+    <input type="number" id="ipt_valor"><br>
+
+    a cada quantos meses o bonus é aplicado
+    <input type="number" id="ipt_bonus"><br>
+
+    <button onclick="somar()">Acompanhar grana</button>
+
+    <div id="div_result"></div>
+   
+</body>
+</html>
+<script>
+    function somar() {
+        let deposito = Number(ipt_deposito.value);
+        let valor = Number(ipt_valor.value);
+        let bonusQ = Number(ipt_bonus.value);
+
+        let contador = 1;
+        let valorTotal = 0;
+
+        div_result.innerHTML=``
+
+        while(contador <= deposito) {
+            if(contador % bonusQ !== 0){
+                valorTotal+= valor
+                div_result.innerHTML+= `${contador}° mês: R$${valorTotal.toFixed(2)}<br>`
+                contador++
+            } else {
+                valorTotal+= valor + (valorTotal * 0.01)
+                div_result.innerHTML+= `${contador}° mês: R$${valorTotal.toFixed(2)} ⭐<br>`
+                contador++
+            }
+            
+
+            
+        }
+            div_result.innerHTML+=`Total guardado: R$${valorTotal.toFixed(2)}`
+
+    }
+</script>
