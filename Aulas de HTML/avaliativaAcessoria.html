@@ -34,7 +34,7 @@ O número máximo de semanas do plano.
         if(distancia <= 0 || (aumento < 1 || aumento > 10) || meta <= distancia || (maxSemanas < 1 || maxSemanas > 24)){
             div_result.innerHTML=`Insira valores válidos`
         } else {
-            while(contador < maxSemanas || distancia < meta) {
+            while(contador < maxSemanas && distancia < meta) {
                 metaSemana = (distancia / meta) * 100
                 if(contador % 4 !== 0) {
                     div_result.innerHTML+=`SEMANA ${contador} - ${distancia.toFixed(2)} km (${metaSemana.toFixed(2)}% da meta)<br>`
@@ -48,9 +48,9 @@ O número máximo de semanas do plano.
                 }
             }
 
-            if(contador >+ maxSemanas && distancia < meta) {
+            if(contador >= maxSemanas) {
                 div_result.innerHTML+=`Meta não atingida em ${contador} semanas. A última semana chegou a ${metaSemana.toFixed(2)}% da meta. Total acumulado no plano: ${distancia.toFixed(2)} km.`
-            } else if(distancia > meta) {
+            } else if(distancia => meta) {
                 div_result.innerHTML+=`Meta de ${meta} km atingida na semana ${contador}! Total acumulado no plano: ${distancia.toFixed(2)} km.`
 
             }
