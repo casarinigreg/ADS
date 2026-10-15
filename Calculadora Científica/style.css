@@ -1,0 +1,201 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 60%, #020617 100%);
+}
+
+.calculadora {
+  width: 430px;
+  max-width: 100%;
+  background: #111827;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.visor {
+  background: #0b1220;
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  border: 1px solid #1f2937;
+}
+
+.indicadores {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.indicador {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #64748b;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 1px 6px;
+  opacity: 0.45;
+}
+
+.indicador.ativo {
+  color: #34d399;
+  border-color: #34d399;
+  opacity: 1;
+}
+
+.expressao {
+  min-height: 22px;
+  text-align: right;
+  font-size: 15px;
+  color: #94a3b8;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+.resultado {
+  text-align: right;
+  font-size: 38px;
+  font-weight: 600;
+  color: #f8fafc;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.teclado {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.tecla {
+  border: none;
+  border-radius: 10px;
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #e2e8f0;
+  background: #1f2937;
+  cursor: pointer;
+  transition: transform 0.06s ease, background 0.15s ease, box-shadow 0.15s ease;
+  user-select: none;
+}
+
+.tecla sup {
+  font-size: 10px;
+}
+
+.tecla:hover {
+  background: #273549;
+}
+
+.tecla:active {
+  transform: scale(0.94);
+}
+
+.tecla.funcao {
+  background: #243b55;
+  color: #bae6fd;
+}
+
+.tecla.funcao:hover {
+  background: #2d4a6b;
+}
+
+.tecla.memoria {
+  background: #3b2f4a;
+  color: #d8b4fe;
+  font-size: 13px;
+}
+
+.tecla.memoria:hover {
+  background: #4a3b5c;
+}
+
+.tecla.numero {
+  background: #334155;
+  font-size: 19px;
+}
+
+.tecla.numero:hover {
+  background: #3f5069;
+}
+
+.tecla.operador {
+  background: #0e7490;
+  color: #ecfeff;
+  font-size: 19px;
+}
+
+.tecla.operador:hover {
+  background: #0891b2;
+}
+
+.tecla.igual {
+  grid-row: span 1;
+  background: linear-gradient(135deg, #22c55e, #15803d);
+  color: #fff;
+  font-size: 21px;
+}
+
+.tecla.igual:hover {
+  background: linear-gradient(135deg, #34d399, #16a34a);
+}
+
+.historico {
+  margin-top: 16px;
+  border-top: 1px solid #1f2937;
+  padding-top: 12px;
+  max-height: 130px;
+  overflow-y: auto;
+}
+
+.historico h2 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.historico ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.historico li {
+  font-size: 13px;
+  color: #cbd5e1;
+  background: #0b1220;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.historico li:hover {
+  background: #16213a;
+}
+
+.historico li span {
+  color: #64748b;
+}
+
+.historico li strong {
+  color: #34d399;
+  font-weight: 600;
+}

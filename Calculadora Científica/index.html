@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Científica</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="calculadora">
+    <section class="visor">
+      <div class="indicadores">
+        <span id="ind-memoria" class="indicador" title="Memória ativa">M</span>
+        <span id="ind-angulo" class="indicador ativo" title="Modo de ângulo">DEG</span>
+      </div>
+      <div id="expressao" class="expressao"></div>
+      <div id="resultado" class="resultado">0</div>
+    </section>
+
+    <section class="teclado">
+      <button class="tecla memoria" data-acao="mc">MC</button>
+      <button class="tecla memoria" data-acao="mr">MR</button>
+      <button class="tecla memoria" data-acao="m-plus">M+</button>
+      <button class="tecla memoria" data-acao="m-minus">M-</button>
+      <button class="tecla memoria" data-acao="ms">MS</button>
+
+      <button class="tecla funcao" data-valor="sin(">sin</button>
+      <button class="tecla funcao" data-valor="cos(">cos</button>
+      <button class="tecla funcao" data-valor="tan(">tan</button>
+      <button class="tecla funcao" data-acao="deg">DEG</button>
+      <button class="tecla funcao" data-acao="rad">RAD</button>
+
+      <button class="tecla funcao" data-valor="asin(">sin<sup>-1</sup></button>
+      <button class="tecla funcao" data-valor="acos(">cos<sup>-1</sup></button>
+      <button class="tecla funcao" data-valor="atan(">tan<sup>-1</sup></button>
+      <button class="tecla funcao" data-valor="log(">log</button>
+      <button class="tecla funcao" data-valor="ln(">ln</button>
+
+      <button class="tecla funcao" data-valor="sqrt(">&#8730;</button>
+      <button class="tecla funcao" data-valor="cbrt(">&#8731;</button>
+      <button class="tecla funcao" data-valor="^">&and;</button>
+      <button class="tecla funcao" data-valor="!">n!</button>
+      <button class="tecla funcao" data-valor="1/">1/x</button>
+
+      <button class="tecla funcao" data-valor="pi">&#960;</button>
+      <button class="tecla funcao" data-valor="e">e</button>
+      <button class="tecla funcao" data-valor="abs(">|x|</button>
+      <button class="tecla funcao" data-valor="exp(">e<sup>x</sup></button>
+      <button class="tecla funcao" data-valor="10^">10<sup>x</sup></button>
+
+      <button class="tecla funcao" data-acao="limpar">C</button>
+      <button class="tecla funcao" data-acao="apagar">&#9003;</button>
+      <button class="tecla funcao" data-valor="(">(</button>
+      <button class="tecla funcao" data-valor=")">)</button>
+      <button class="tecla funcao" data-valor="%">%</button>
+
+      <button class="tecla numero" data-valor="7">7</button>
+      <button class="tecla numero" data-valor="8">8</button>
+      <button class="tecla numero" data-valor="9">9</button>
+      <button class="tecla operador" data-valor="/">&#247;</button>
+      <button class="tecla operador" data-acao="ans">Ans</button>
+
+      <button class="tecla numero" data-valor="4">4</button>
+      <button class="tecla numero" data-valor="5">5</button>
+      <button class="tecla numero" data-valor="6">6</button>
+      <button class="tecla operador" data-valor="*">&times;</button>
+      <button class="tecla funcao" data-valor="mod">mod</button>
+
+      <button class="tecla numero" data-valor="1">1</button>
+      <button class="tecla numero" data-valor="2">2</button>
+      <button class="tecla numero" data-valor="3">3</button>
+      <button class="tecla operador" data-valor="-">&minus;</button>
+      <button class="tecla funcao" data-acao="mais-menos">&#177;</button>
+
+      <button class="tecla numero" data-valor="0">0</button>
+      <button class="tecla numero" data-valor=".">.</button>
+      <button class="tecla operador" data-valor="+">+</button>
+      <button class="tecla igual" data-acao="calcular">=</button>
+    </section>
+
+    <section class="historico">
+      <h2>Histórico</h2>
+      <ul id="lista-historico"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
