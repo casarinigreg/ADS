@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2</title>
+</head>
+<body>
+    <button onclick="dizer()">Diga algo sobre a materia de algoritmos</button>
+    <div id="div_result"></div>
+</body>
+</html>
+<script>
+    function dizer(){
+        let frase = "Eu amo algoritmos!"
+
+        for(let i = 1; i <= 7; i++){
+            div_result.innerHTML+=`${frase}<br>`
+        }
+    }
+</script>
+

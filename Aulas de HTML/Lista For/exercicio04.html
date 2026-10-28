@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 4</title>
+</head>
+<body>
+    Informe o nome da pessoa que você mais ama 
+    <input type="text" id="ipt_amor">
+    <br>
+    o quanto você ama esse alguem 
+    <input type="number" id="ipt_qtdAmor">
+    <br>
+    <button onclick="expressar()">Expressar amor</button>
+    <div id="div_result"></div>
+</body>
+</html>
+<script>
+    function expressar(){
+        let amor = ipt_amor.value;
+        let quanto = Number(ipt_qtdAmor.value);
+
+        for(let i = 1; i <= quanto; i++){
+            div_result.innerHTML+=`${i} - ${amor}, eu te amo! Sempre lembre disso!<br>`
+        }
+    }
+</script>
