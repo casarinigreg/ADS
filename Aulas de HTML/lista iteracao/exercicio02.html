@@ -15,15 +15,18 @@
 </body>
 </html>
 <script>
+    let lista = [];
     function cadastrar() {
         let filmes = ipt_filmes.value;
-        let lista = [];
         lista.push(filmes)
+
+        div_result.innerHTML=``
 
         for(let i = 0; i < lista.length; i++) {
             if(i % 2 == 0) {
-                div_result.innerHTML+=`filme: ${lista[i]}<br>`
+                div_result.innerHTML+=`<span style="color: red;">filme: ${lista[i]}</span><br>`
             } else {
+                div_result.innerHTML+=`<span style="color: blue;">filme: ${lista[i]}</span><br>`
 
             }
         }

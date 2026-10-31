@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 3</title>
+</head>
+<body>
+    informe um número para cadastrar
+    <input type="number" id="ipt_num">
+    <br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="total()">Ver todos</button>
+    <button onclick="verPares()">Ver pares</button>
+    <button onclick="verImpares()">Ver impares</button>
+    <div id="div_result"></div>
+</body>
+</html>
+<script>
+    let lista = []
+    function cadastrar(){
+        let num = Number(ipt_num.value);
+        lista.push(num);
+    }
+
+    function total() {
+        div_result.innerHTML=``
+
+        for(let i = 0; i < lista.length; i++) {
+            div_result.innerHTML+=`${lista[i]}<br>`
+        }
+    }
+
+    function verPares() {
+        div_result.innerHTML=``
+        for(let i = 0; i < lista.length; i++) {
+            if(lista[i] % 2 == 0) {
+                div_result.innerHTML+=`${lista[i]}<br>`
+            }
+        }
+    }
+
+    function verImpares() {
+        div_result.innerHTML=``
+        for(let i = 0; i < lista.length; i++){
+        if(lista[i] % 2 !== 0) {
+            div_result.innerHTML+=`${lista[i]}<br>`
+            }
+        }
+    }
+</script>
