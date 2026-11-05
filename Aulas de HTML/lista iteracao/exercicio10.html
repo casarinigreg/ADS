@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 10</title>
+</head>
+<body>
+    digite um número qualquer
+    <input type="number" id="ipt_num">
+    <br>
+    <button onclick="analisar()">Analisar histórico</button>
+    <div id="div_result"></div>
+</body>
+</html>
+<script>
+    let lista = [];
+    function analisar(){
+        let num = ipt_num.value;
+        lista.push(num);
+
+        let maiorValor = lista[0];
+        let menorValor = lista[0];
+
+        div_result.innerHTML=``
+
+        for(let i = 0; i < lista.length; i++){
+            div_result.innerHTML+=`${i + 1}º Número: ${lista[i]}<br><br>`
+            
+            if(lista[i] > maiorValor) {
+                maiorValor = lista[i];
+            }
+            
+            if(lista[i] < menorValor) {
+                menorValor = lista[i];
+            }
+        }
+        
+        div_result.innerHTML+=`Maior: ${maiorValor}<br><br>
+        Menor: ${menorValor}`
+    }
+</script>
+
+a) Tenha um campo "Digite um número qualquer";  
+
+b) Tenha um botão "Analisar histórico" que ao ser clicado, o número é cadastrado em algum lugar e, em seguida, deve aparecer um histórico dos números cadastrados, bem como o maior e o menor, como no exemplo a seguir:  
+
+   1º Número: 15  
+
+   2º Número: 22  
+
+   3º Número: 19  
+
+   4º Número: 5  
+
+   Maior: 22  
+
+   Menor: 5  
+
+OBS: Para encontrar o 'maior' e 'menor' valor, deve utilizar uma variável auxiliar e comparar todos os itens do vetor. 
+
+            let minhaLista = [10, 20, 5, 8];
+            let menorValor = minhaLista[0];   // começa com o número 10 sendo o menor valor;
+            let maiorValor = minhaLista[0];   // começa com o número 10 sendo o maior valor;
+
+        Para essa lista acima, eu posso afirmar que:
+
+Na primeira iteração, o 10 é o maior e menor valor naquele momento, então criamos as variáveis utilizando minhaLista[0].
+Na segunda iteração, 20 é maior que 10, então passa a ser o maior valor, enquanto 10 continua sendo o menor valor do vetor naquele momento.
+Na terceira iteração, 5 é menor que 10, então passa a ser o menor valor, enquanto 20 continua sendo o maior valor do vetor naquele momento.
+Na última iteração, 8 não é menor que 5 e nem maior que 20, então 5 continua sendo o menor valor, enquanto 20 continua sendo o maior valor do vetor naquele momento.
+        Ao final dessas iterações, podemos afirmar que comparamos todos os números do vetor, iniciando com o valor 10, até encontrarmos algo que seja maior que o "maiorValor" e algo menor que o "menorValor", para reatribuir essas variáveis auxiliares. 

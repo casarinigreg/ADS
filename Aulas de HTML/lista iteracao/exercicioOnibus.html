@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onibus</title>
+</head>
+<body>
+    <input type="text" id="ipt_linha">
+    <button onclick="cadastrar()">Cadastrar linha</button>
+    <br>
+    <input type="text" id="ipt_pesquisa">
+    <button onclick="pesquisar()">Pesquisar</button>
+    <div id="div_result"></div>
+</body>
+</html>
+<script>
+    let listalinhas = [];
+    function cadastrar(){
+        let mensagem = "";
+        let linha = ipt_linha.value;
+        listalinhas.push(linha)
+
+        for(let i = listalinhas.length - 1; i >= 0; i--) {
+            mensagem+= `linha: ${listalinhas[i]} <br>`
+        }
+        div_result.innerHTML= mensagem
+    }
+
+    function pesquisar() {
+        let pesquisa = ipt_pesquisa.value;
+        let cont = 0;
+        let listaPesquisa = [];
+
+        if(listalinhas.includes(pesquisa)) {
+            for(let i = 0; i < listalinhas.length; i++) {
+                if(listalinhas[i] == pesquisa) {
+                    cont++
+                    listaPesquisa.push(i + 1)
+                }
+            }
+            div_result.innerHTML=`Você já pegou essa linha ${cont} vezes nos indices ${listaPesquisa}`
+        } else {
+            div_result.innerHTML=`Você nunca pegou essa linha`
+        }
+    }
+</script>

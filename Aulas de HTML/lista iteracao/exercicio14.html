@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 14</title>
+</head>
+<body>
+    Temperatura do dia 
+    <input type="number" id="ipt_tempDia">
+    <br>
+    <button onclick="registrar()">Registrar</button>
+    <div id="div_result"></div>
+</body>
+</html>
+<script>
+    let listaTemperaturas = [];
+    function registrar(){
+        let tempDia = Number(ipt_tempDia.value);
+        
+        if(tempDia < -20 || tempDia > 50) {
+            alert('Temperatura inválida')
+        }else {
+            listaTemperaturas.push(tempDia)
+            let dia = listaTemperaturas.length
+            div_result.innerHTML=`Temperatura do dia ${dia} anotada!<br><br>`
+        }
+
+        maiorTemp = listaTemperaturas[0];
+        menorTemp = listaTemperaturas[0];
+        diasCalor = 0;
+
+        for(let i = listaTemperaturas.length - 1; i >= 0; i--) {
+            if(listaTemperaturas[i] < 15) {
+                div_result.innerHTML+=`Dia ${i + 1}: ${listaTemperaturas[i]}ºC: Frio<br><br>`
+            } else if(listaTemperaturas[i] < 24) {
+                div_result.innerHTML+=`Dia ${i + 1}: ${listaTemperaturas[i]}ºC: Agradável<br><br>`
+            } else {
+                div_result.innerHTML+=`Dia ${i + 1}: ${listaTemperaturas[i]}ºC: Calor<br><br>`
+                diasCalor++
+            }
+
+            tempAtual = listaTemperaturas[i];
+
+            if (tempAtual > maiorTemp) {
+                maiorTemp = listaTemperaturas[i];
+                }
+
+            if(tempAtual < menorTemp) {
+                menorTemp = listaTemperaturas[i];
+
+            }
+        }
+
+        div_result.innerHTML+=`Maior temperatura: ${maiorTemp} <br><br>
+            Menor temperatura: ${menorTemp}<br><br>
+            Dias de calor: ${diasCalor}`
+
+    }
+</script>
+<!-- 
+a) Tenha um campo “Temperatura do dia” e um botão “Registrar”;
+
+b) Ao registrar, exiba: “Temperatura do dia 3 anotada!”
+
+c) Não permita temperaturas menores que -20 ou maiores que 50 (alert: “Temperatura inválida!”);
+
+d) A cada registro, exiba a lista em ordem inversa, com a classificação de cada dia:
+
+    Dia 3: 33°C – Calor
+
+    Dia 2: 22°C – Agradável
+
+    Dia 1: 11°C – Frio
+
+Regras:
+
+    Abaixo de 15°C: Frio
+
+    De 15°C a 24°C: Agradável
+
+    Acima de 24°C: Calor
+
+e) Abaixo da lista, exiba:
+
+    Maior temperatura: X°C
+
+    Menor temperatura: Y°C
+
+    Dias de calor: Z
+
+OBS: Para maior e menor, siga a mesma lógica do exercício 10. -->

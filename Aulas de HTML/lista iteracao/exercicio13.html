@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 13</title>
+</head>
+<body>
+    Insira um produto
+    <input type="text" id="ipt_produto">
+    <br>
+    informe o preço dele
+    <input type="number" id="ipt_preco">
+    <br>
+    <button onclick="adicionar()">Adicionar produto</button>
+    <button onclick="exibir()">Ver carrinho</button>
+    <div id="div_result"></div>
+</body>
+</html>
+<script>
+    let listaProdutos = [];
+    let listaPrecos = [];
+    function adicionar(){
+        let produto = ipt_produto.value;
+        let preco = Number(ipt_preco.value);
+
+        if(produto == "" || preco <= 0 || listaProdutos.includes(produto)) {
+            div_result.innerHTML=`Insira valores e produtos válidos!`
+        } else {
+            listaProdutos.push(produto)
+            listaPrecos.push(preco)
+
+            div_result.innerHTML=`${produto} Adicionado ao carrinho!`
+        }
+    }
+
+    function exibir(){
+
+        div_result.innerHTML=``
+
+        let maiorPreco = listaPrecos[0];
+        let precoAtual = 0;
+        let indiceMaior = 0;
+
+        let soma = 0;
+
+        for( let i = listaProdutos.length - 1; i >= 0; i--) {
+            div_result.innerHTML+=`Produto ${i + 1} - ${listaProdutos[i]} - R$${listaPrecos[i].toFixed(2)}<br><br>`
+
+            precoAtual = listaPrecos[i]
+            soma += listaPrecos[i];
+
+            if (precoAtual > maiorPreco) {
+                    maiorPreco = listaPrecos[i];
+                    indiceMaior = i;
+                }
+        }
+
+
+
+        div_result.innerHTML+=`Você tem ${listaProdutos.length} produtos no carrinho<br><br>
+        Total da compra: R$${soma}<br><br>
+        Produto mais caro: ${listaProdutos[indiceMaior]} (R$${maiorPreco.toFixed(2)})
+        `
+    }
+</script>
+
+<!-- a) Tenha os campos “Produto” e “Preço”, e um botão “Adicionar”;
+
+b) Ao adicionar, exiba: “Café adicionado ao carrinho!”
+
+c) Valide para não permitir, exibindo um alert de erro:
+
+    Produto vazio
+
+    Preço menor ou igual a 0
+
+    Produto repetido
+
+d) Ao clicar em “Ver carrinho”, exiba os produtos e seus preços em ordem inversa em que foram registrados, como:
+
+    Produto 2 - Feijão - R$7.50
+
+    Produto 1 - Arroz - R$10.00
+
+e) Abaixo da listagem do carrinho, deve aparecer:
+
+    Você tem X produtos no carrinho
+
+    Total da compra: R$Y
+
+    Produto mais caro: NOME (R$Z)
+
+OBS: Utilize 2 vetores (nomes e preços), associados pelo índice, como no exercício 11. -->
