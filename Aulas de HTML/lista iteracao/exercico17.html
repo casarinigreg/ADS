@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 17</title>
+</head>
+<body>
+    Nome da música
+    <input type="text" id="ipt_musica">
+    <br>
+    Duração(em minutos)
+    <input type="text" id="ipt_minutos">
+    <br>
+    <button onclick="adicionar()">Adicionar à playlist</button>
+    <button onclick="ver()">Ver playlist</button>
+    <div id="div_result"></div>
+</body>
+</html>
+<script>
+    let listaMusicas = [];
+    let listaMinutos = [];
+    function adicionar(){
+        let musica = ipt_musica.value;
+        let minutos = Number(ipt_minutos.value);
+
+        if(musica == "") {
+            alert('Insira o nome da música')
+        }else if(minutos <= 0) {
+            alert('Insira a duração da música')
+        } else {
+            listaMusicas.push(musica);
+            listaMinutos.push(minutos);
+            div_result.innerHTML=`${musica} entrou na playlist!`
+        }
+    }
+
+    function ver(){
+
+        let somaMinutos = 0;                     
+        for (let i = 0; i < listaMinutos.length; i++) {
+        somaMinutos+= listaMinutos[i];      
+    }
+
+            minAtual = listaMinutos[i];
+
+            if (tempAtual > maiorTemp) {
+                maiorTemp = listaTemperaturas[i];
+            }
+
+        div_result.innerHTML=`
+        Total de músicas: ${listaMusicas.length}<br><br>
+        Duração total: ${somaMinutos} Minutos<br><br>
+
+        `
+    }
+</script>
+<!-- 
+a) Tenha os campos “Nome da música” e “Duração (em minutos)”, e um botão “Adicionar à playlist”;
+
+b) Ao adicionar, exiba: “Bohemian Rhapsody entrou na playlist!”
+
+c) Não permita nome vazio nem duração menor ou igual a 0. Músicas repetidas são permitidas.
+
+d) Ao clicar em “Ver playlist”, exiba as músicas em ordem inversa e, abaixo:
+
+    Total de músicas: X
+
+    Duração total: Y minutos
+
+    Música mais longa: NOME
+
+e) Tenha um campo “Pesquisar música” e um botão “Pesquisar”. Ao clicar, exiba:
+
+    “Essa música não está na playlist”
+
+OU
+
+    “A música  Bohemian Rhapsody aparece 2 vezes na playlist, nos índices: 1, 4”
+
+OBS: Assim como no exercício 6, utilize o for para encontrar todas as posições, pois o indexOf encontra apenas a primeira. -->
