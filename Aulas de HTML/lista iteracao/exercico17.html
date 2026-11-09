@@ -12,8 +12,12 @@
     Duração(em minutos)
     <input type="text" id="ipt_minutos">
     <br>
+    Pesquisar musica
+    <input type="text" id="ipt_pesquisa">
+    <br>
     <button onclick="adicionar()">Adicionar à playlist</button>
     <button onclick="ver()">Ver playlist</button>
+    <button onclick="pesquisar()">Pesquisar</button>
     <div id="div_result"></div>
 </body>
 </html>
@@ -40,20 +44,45 @@
         let somaMinutos = 0;                     
         for (let i = 0; i < listaMinutos.length; i++) {
         somaMinutos+= listaMinutos[i];      
+        maiorMusica = 0;
+        minAtual = listaMinutos[i];
+
+
+        if (minAtual > maiorMusica) {
+            maiorMusica = listaMinutos[i];
+            maiorMusica = listaMusicas[maiorMusica]
+        }
     }
 
-            minAtual = listaMinutos[i];
+     for( let i = listaMusicas.length - 1; i >= 0; i--) {
+            div_result.innerHTML=`Playlist:<br><br>`
+            div_result.innerHTML+=`${listaMusicas[i]}<br><br>`
 
-            if (tempAtual > maiorTemp) {
-                maiorTemp = listaTemperaturas[i];
-            }
+     }
 
-        div_result.innerHTML=`
+        div_result.innerHTML+=`
         Total de músicas: ${listaMusicas.length}<br><br>
         Duração total: ${somaMinutos} Minutos<br><br>
-
+        Música mais longa: ${maiorMusica}
         `
     }
+
+    function pesquisar(){
+    let pesquisa = ipt_pesquisa.value;
+    let indices = [];   // vai guardar TODAS as posições encontradas
+
+    for (let i = 0; i < listaMusicas.length; i++) {
+        if (listaMusicas[i] == pesquisa) {
+            indices.push(i);
+        }
+    }
+
+    if (indices.length == 0) {
+        div_result.innerHTML = `Essa música não está na playlist`;
+    } else {
+        div_result.innerHTML = `A música ${pesquisa} aparece ${indices.length} vezes na playlist, nos índices: ${indices}`;
+    }
+}
 </script>
 <!-- 
 a) Tenha os campos “Nome da música” e “Duração (em minutos)”, e um botão “Adicionar à playlist”;
